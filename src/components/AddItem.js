@@ -3,12 +3,13 @@ import { Context } from './../App';
 import './AddItem.css'
 
 // const AddItem = ({setExpnc, setTotal}) => {
-    const AddItem = () => {
+const AddItem = () => {
 
-        const {setExpnc,setTotal} = useContext(Context)
+    const {setExpnc,setTotal} = useContext(Context)
 
-    const titleRef = useRef();
-    const priceRef = useRef();
+
+        const titleRef = useRef();
+        const priceRef = useRef();
 
   return (
     <div className='add_sec'>
@@ -22,11 +23,17 @@ import './AddItem.css'
             onClick={()=>{
                 const title = titleRef.current.value;
                 const price = parseInt(priceRef.current.value);
-                setExpnc(prev=>[...prev,{title,price}])
-                setTotal(prevValue=>price+prevValue)
-                titleRef.current.value="";
-                priceRef.current.value="";
-                
+                if(title==="" || price==="")
+                {
+                    alert("Please add item")
+                }
+                else {
+                    setExpnc(prev=>[...prev,{title,price}])
+                    setTotal(prevValue=>price+prevValue)
+                    titleRef.current.value="";
+                    priceRef.current.value="";   
+                }
+               
             }}
         >Add</button>
       
@@ -35,3 +42,5 @@ import './AddItem.css'
 }
 
 export default AddItem
+
+ 

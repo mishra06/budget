@@ -24,6 +24,7 @@ const ShowBudget = () => {
             <span>Title: {item.title}</span>
             <span>Price: {item.price}</span>
           </div>
+        
           <button onClick={() => handleDelete(index)}>x</button>
         </div>
       ))
